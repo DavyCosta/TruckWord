@@ -1,0 +1,139 @@
+<div class="titulo">Formulário Empresas</div>
+
+<!-- cria a variavel #f e associa a uma instância de ngForm -->
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+  <div class="example-container" >
+    <mat-form-field  class="codigo" appearance="fill" >
+    <mat-label for="codigo">Código</mat-label>
+    <input class="form-control" matInput type="text"  name="codigo" id="codigo"  #input placeholder="Ex. 1, 10"
+    [(ngModel)]="empresa.codigo" [readonly]="f.valid">
+    </mat-form-field>
+
+    <button mat-stroked-button (click)="buscar()" color="primary" type="button" class="buscar" > 
+        <mat-icon >search</mat-icon>
+      Buscar
+    </button>
+
+    <span style="color: red; margin-left: 10px; ">{{erroMensagem}}</span>
+  </div><div class="subTitulo">Dados da empresa</div>
+
+  <div class="form-group">
+
+    <mat-form-field class="form-control" appearance="fill" >
+      <mat-label for="cnpj">CNPJ</mat-label>
+      <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+      <input matInput type="text" class="form-control" name="cnpj" id="cnpj" #input maxlength="40" placeholder="Ex. 123546789-45"
+      [(ngModel)]="empresa.cnpj" required #vltCNPJ="ngModel"> 
+      <small [hidden]="vltCNPJ.valid || (vltNome.pristine && !f.submitted)" style="color: red;">
+        CNPJ é obrigatório.
+      </small>
+    </mat-form-field>
+
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="nome">Nome</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="nome" id="nome" #input maxlength="40" placeholder="Ex. Eniac Transportes"
+    [(ngModel)]="empresa.nome" required #vltNome="ngModel"> 
+    <small [hidden]="vltNome.valid || (vltNome.pristine && !f.submitted)" style="color: red;">
+      Nome é obrigatório.
+    </small>
+    </mat-form-field>
+
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="usuario">Usuario</mat-label>
+    <!-- #vltusuario é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput class="form-control" name="usuario" id="usuario"  #vltUsuario="ngModel" placeholder="pat@example.com" 
+    [(ngModel)]="empresa.usuario" required >  
+    <small [hidden]="vltUsuario.valid || (vltUsuario.pristine && !f.submitted )" style="color: red;">
+      Usuario é obrigatório.
+    </small> 
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="cep">CEP</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="cep" id="cep"  #input maxlength="12" placeholder="Ex. 12345-45584"
+    [(ngModel)]="empresa.cep" required #vltCEP="ngModel"> 
+    <small [hidden]="vltCEP.valid || (vltCEP.pristine && !f.submitted)" style="color: red;">
+      CEP é obrigatório.
+    </small> 
+    </mat-form-field>
+  
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="celular">Celular</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="celular" id="celular" #input maxlength="15" placeholder="Ex. 11 91234-1313"
+    [(ngModel)]="empresa.celular" required #vltCelular="ngModel"> 
+    <small [hidden]="vltCelular.valid || (vltCelular.pristine && !f.submitted)" style="color: red;">
+      Celular é obrigatório.
+    </small>
+    </mat-form-field>
+  
+  </div>
+  <div class="form-group">
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="telefone">Telefone</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="telefone" id="telefone" #input maxlength="15" placeholder="Ex. 11 5813-1635"
+    [(ngModel)]="empresa.telefone" required #vltTelefone="ngModel"> 
+    <small [hidden]="vltTelefone.valid || (vltTelefone.pristine && !f.submitted)" style="color: red;">
+      Telefone é obrigatório.
+    </small>
+    </mat-form-field>
+
+    <mat-form-field class="form-control" appearance="fill" >
+      <mat-label for="senha">Senha</mat-label>
+      <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+      <input matInput type="text" class="form-control" name="senha" id="senha" #input maxlength="15" placeholder="Ex. ********"
+      [(ngModel)]="empresa.senha" required #vltSenha="ngModel"> 
+      <small [hidden]="vltSenha.valid || (vltSenha.pristine && !f.submitted)" style="color: red;">
+        Senha é obrigatório.
+      </small>
+      </mat-form-field>
+  </div>
+
+
+  <!-- o botão Submit só ativa se o formulário for válido -->
+  <button mat-stroked-button type="submit" [disabled]="!f.valid" class="botton"> 
+    <mat-icon > done </mat-icon>
+    {{textoBotao}}
+  </button>
+
+  <button    mat-stroked-button type="button" color="warn" (click)="cancelar(f)" class="botton" > 
+    <mat-icon >cancel</mat-icon>
+    Cancelar
+  </button>
+
+</form>
+
+<br><br>
+<div class="div_table">
+<table  class="mat-elevation-z8" >
+    <tr>
+      <th>Codigo</th><th>CNPJ</th><th>Nome</th><th>Usuario</th><th>CEP</th><th>Celular</th><th>Telefone</th><th>Senha</th><th>Ações</th>
+    </tr>
+    <tr class="dados" *ngFor="let item of todosEmpresas">
+      <td>{{ item.codigo }}</td>
+      <td>{{ item.cnpj }}</td>
+      <td>{{ item.nome }}</td>
+      <td>{{ item.usuario }}</td>
+      <td>{{ item.cep }}</td>
+      <td>{{ item.celular }}</td>
+      <td>{{ item.telefone }}</td>
+      <td>{{ item.senha }}</td>
+
+      <td style="text-align: center">
+        <button class="botton1" mat-raised-button color="primary"  (click)="selecionarEdicao(item.codigo)" type="button"> 
+          <mat-icon>edit</mat-icon>
+          Editar
+        </button>
+        <button class="botton" mat-raised-button color="warn" (click)="excluir(item.codigo)" type="button">
+          <mat-icon >delete_outline</mat-icon>
+          Excluir
+        </button>
+      </td>
+    </tr>
+</table>
+</div>

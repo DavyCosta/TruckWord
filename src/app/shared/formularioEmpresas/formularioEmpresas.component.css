@@ -1,0 +1,103 @@
+
+
+input{
+    height: 20px;
+    font-size: 1.2em;
+}
+
+form{
+    margin: auto;
+    width: 90%;
+
+}
+table {
+    margin: auto;
+    width: 100%;
+}
+.div_table{
+    margin: auto;
+    padding-top: 40px;
+    width: 93%;
+    padding-bottom: 110px;
+    overflow: auto;
+
+}
+
+tr{
+    height: 30px;    
+}
+
+
+tr:first-child {
+    background-color: #3f5bb5;
+    color: white;
+    font-family: cursive;
+    font-size: 1.2em;
+    height: 50px;
+}
+
+tr:not(:first-child):hover {
+    /* background-color: #cecece; */
+    box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+    
+}
+
+input:read-only {
+    background-color: gainsboro;
+    border-width: 1px;
+    
+  }
+.botton1 {
+    margin-right: 20px;
+    padding: 0 30px 0;
+    background-color: rgb(47, 128, 54);
+}
+.botton {
+    padding: 0 40px 0;
+}
+
+.buscar{
+    padding: 0 60px 0;
+}
+.example-container {
+    padding-top: 40px;
+}
+.form-control{
+    width: 430px;
+    margin-right: 30px;
+    padding: 0px 35px 0 0;
+}
+.id{
+    width: 250px;
+}
+
+.dados{
+    text-align: center;
+    font-size: 1.1em;
+}
+
+mat-form-field{
+    margin-bottom: 20px;
+    margin-right: 15px;
+}
+
+td{
+    padding-top: 10px;
+}
+.titulo{
+    font-size: 1.6em;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color: #3f5bb5;
+    font-family: cursive;
+    font-weight: bold;
+}
+.subTitulo{
+    font-size: 1.2em;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color: #3f5bb5;
+    font-family: cursive;
+    font-weight: bold;
+}

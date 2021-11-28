@@ -1,0 +1,222 @@
+<div class="titulo">Formulário Usuários</div>
+
+<!-- cria a variavel #f e associa a uma instância de ngForm -->
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+  <div class="example-container" >
+    <mat-form-field  class="codigo" appearance="fill" >
+    <mat-label for="codigo">Código</mat-label>
+    <input class="form-control" matInput type="text"  name="codigo" id="codigo"  #input placeholder="Ex. 1, 10"
+    [(ngModel)]="usuario.codigo" [readonly]="f.valid">
+    </mat-form-field>
+
+    <button mat-stroked-button (click)="buscar()" color="primary" type="button" class="buscar" > 
+        <mat-icon >search</mat-icon>
+      Buscar
+    </button>
+
+    <span style="color: red; margin-left: 10px; ">{{erroMensagem}}</span>
+  </div><div class="subTitulo">Dados pessoais</div>
+
+  <div class="form-group">
+
+    <mat-form-field class="form-control" appearance="fill" >
+      <mat-label for="cpf">CPF</mat-label>
+      <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+      <input matInput type="text" class="form-control" name="cpf" id="cpf" #input maxlength="40" placeholder="Ex. 123546789-45"
+      [(ngModel)]="usuario.cpf" required #vltCPF="ngModel"> 
+      <small [hidden]="vltCPF.valid || (vltNome.pristine && !f.submitted)" style="color: red;">
+        CPF é obrigatório.
+      </small>
+    </mat-form-field>
+
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="nome">Nome</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="nome" id="nome" #input maxlength="40" placeholder="Ex. Davy Costa Silva"
+    [(ngModel)]="usuario.nome" required #vltNome="ngModel"> 
+    <small [hidden]="vltNome.valid || (vltNome.pristine && !f.submitted)" style="color: red;">
+      Nome é obrigatório.
+    </small>
+    </mat-form-field>
+
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="usuario">Usuário</mat-label>
+    <!-- #vltUsuario é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput class="form-control" name="usuario" id="usuario"  #vltUsuario="ngModel" placeholder="Ex. truck@transporte.com" 
+    [(ngModel)]="usuario.usuario" required >  
+    <small [hidden]="vltUsuario.valid || (vltUsuario.pristine && !f.submitted )" style="color: red;">
+      Usuário é obrigatório.
+    </small> 
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="cep">CEP</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="cep" id="cep"  #input maxlength="12" placeholder="Ex. 12345-45584"
+    [(ngModel)]="usuario.cep" required #vltCEP="ngModel"> 
+    <small [hidden]="vltCEP.valid || (vltCEP.pristine && !f.submitted)" style="color: red;">
+      CEP é obrigatório.
+    </small> 
+    </mat-form-field>
+  
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="celular">Celular</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="celular" id="celular" #input maxlength="15" placeholder="Ex. 11 91234-1313"
+    [(ngModel)]="usuario.celular" required #vltCelular="ngModel"> 
+    <small [hidden]="vltCelular.valid || (vltCelular.pristine && !f.submitted)" style="color: red;">
+      Celular é obrigatório.
+    </small>
+    </mat-form-field>
+  
+  
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="telefone">Telefone</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="telefone" id="telefone" #input maxlength="15" placeholder="Ex. 11 5813-1635"
+    [(ngModel)]="usuario.telefone" required #vltTelefone="ngModel"> 
+    <small [hidden]="vltTelefone.valid || (vltTelefone.pristine && !f.submitted)" style="color: red;">
+      Telefone é obrigatório.
+    </small>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="cnh">CNH</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="cnh" id="cnh" #input maxlength="15" placeholder="Ex. 1234567890"
+    [(ngModel)]="usuario.cnh" required #vltCNH="ngModel"> 
+    <small [hidden]="vltCNH.valid || (vltCNH.pristine && !f.submitted)" style="color: red;">
+      CNH é obrigatório.
+    </small>
+    </mat-form-field>
+  
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="categoria">Categoria</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="categoria" id="categoria" #input maxlength="15" placeholder="Ex. AE"
+    [(ngModel)]="usuario.categoria" required #vltCategoria="ngModel"> 
+    <small [hidden]="vltCategoria.valid || (vltCategoria.pristine && !f.submitted)" style="color: red;">
+      Categoria é obrigatório.
+    </small>
+    </mat-form-field>
+
+    <mat-form-field class="form-control" appearance="fill" >
+      <mat-label for="senha">Senha</mat-label>
+      <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+      <input matInput type="text" class="form-control" name="senha" id="senha" #input maxlength="15" placeholder="Ex. AE"
+      [(ngModel)]="usuario.senha" required #vltSenha="ngModel"> 
+      <small [hidden]="vltSenha.valid || (vltSenha.pristine && !f.submitted)" style="color: red;">
+        Senha é obrigatório.
+      </small>
+      </mat-form-field>
+  </div><div class="subTitulo">Dados do veiculo</div>
+ 
+  <div class="form-group">
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="marca">Marca</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="marca" id="marca" #input maxlength="20" placeholder="Ex. Scania"
+    [(ngModel)]="usuario.marca" required #vltMarca="ngModel"> 
+    <small [hidden]="vltMarca.valid || (vltMarca.pristine && !f.submitted)" style="color: red;">
+      Marca é obrigatório.
+    </small>
+    </mat-form-field>
+ 
+   <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="modelo">Modelo</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="modelo" id="modelo"  #input maxlength="20" placeholder="Ex. R440"
+    [(ngModel)]="usuario.modelo" required #vltModelo="ngModel"> 
+    <small [hidden]="vltModelo.valid || (vltModelo.pristine && !f.submitted)" style="color: red;">
+      Modelo é obrigatório.
+    </small>
+    </mat-form-field>
+
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="carroceria">Carroceria</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="carroceria" id="carroceria" #input maxlength="20" placeholder="Ex. Tanque"
+    [(ngModel)]="usuario.carroceria" required #vltCarroceria="ngModel"> 
+    <small [hidden]="vltCarroceria.valid || (vltCarroceria.pristine && !f.submitted)" style="color: red;">
+      Carroceria é obrigatório.
+    </small>
+    </mat-form-field>
+  </div>
+ 
+  <div class="form-group">
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="placa">Placa</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="text" class="form-control" name="placa" id="placa" #input maxlength="20" placeholder="Ex. ASX3546"
+    [(ngModel)]="usuario.placa" required #vltPlaca="ngModel"> 
+    <small [hidden]="vltPlaca.valid || (vltPlaca.pristine && !f.submitted)" style="color: red;">
+      Placa é obrigatório.
+    </small>
+    </mat-form-field>
+
+    <mat-form-field class="form-control" appearance="fill" >
+    <mat-label for="media">Media</mat-label>
+    <!-- #vltNome é uma variável local de ngModel. usada para acessar o elemento que precisa de validação -->
+    <input matInput type="" class="form-control" name="media" id="media" #input maxlength="20" placeholder="Ex. 3"
+    [(ngModel)]="usuario.media" required #vltMedia="ngModel"> 
+    <small [hidden]="vltMedia.valid || (vltMedia.pristine && !f.submitted)" style="color: red;">
+      Media é obrigatório.
+    </small>
+   </mat-form-field>
+
+ 
+  </div>
+
+
+  <!-- o botão Submit só ativa se o formulário for válido -->
+  <button mat-stroked-button type="submit" [disabled]="!f.valid" class="botton"> 
+    <mat-icon > done </mat-icon>
+    {{textoBotao}}
+  </button>
+
+  <button    mat-stroked-button type="button" color="warn" (click)="cancelar(f)" class="botton" > 
+    <mat-icon >cancel</mat-icon>
+    Cancelar
+  </button>
+
+
+</form>
+
+<br><br>
+<div class="div_table">
+<table  class="mat-elevation-z8" >
+    <tr>
+      <th>Codigo</th><th>CPF</th><th>Nome</th><th>Usuario</th><th>CEP</th><th>Celular</th><th>Telefone</th><th>CNH</th><th>Categoria</th><th>Marca</th><th>Modelo</th><th>Carroceria</th><th>Placa</th><th>Media</th><th>Senha</th><th>Ações</th>
+    </tr>
+    <tr class="dados" *ngFor="let item of todosUsuario">
+      <td>{{ item.codigo }}</td>
+      <td>{{ item.cpf }}</td>
+      <td>{{ item.nome }}</td>
+      <td>{{ item.usuario }}</td>
+      <td>{{ item.cep }}</td>
+      <td>{{ item.celular }}</td>
+      <td>{{ item.telefone }}</td>
+      <td>{{ item.cnh }}</td>
+      <td>{{ item.categoria }}</td>
+      <td>{{ item.marca }}</td>
+      <td>{{ item.modelo }}</td>
+      <td>{{ item.carroceria }}</td>
+      <td>{{ item.placa }}</td>
+      <td>{{ item.media }}</td>
+      <td>{{ item.senha }}</td>
+      <td style="text-align: center">
+        <button class="botton1" mat-raised-button color="primary"  (click)="selecionarEdicao(item.codigo)" type="button"> 
+          <mat-icon>mode_edit_outline</mat-icon>
+          Editar
+        </button>
+        <button class="botton" mat-raised-button color="warn" (click)="excluir(item.codigo)" type="button">
+          <mat-icon >delete_outline</mat-icon>
+          Excluir
+        </button>
+      </td>
+    </tr>
+</table>
+</div>
